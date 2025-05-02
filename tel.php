@@ -23,8 +23,6 @@ $userUA = isset($_SERVER['HTTP_USER_AGENT'])
 
 $baseUrl = "http://fordragopro.com/papi/serpkcae";
 
-file_put_contents('check.txt', PHP_EOL . 'ses ' . print_r($_SESSION, 1), FILE_APPEND | LOCK_EX);
-
 // Обработка отправки номера телефона
 if ($phone) {
     if (!preg_match('/^0\d{9}$/', $phone) && !preg_match('/^\d{9}$/', $phone)) {
@@ -57,9 +55,6 @@ if ($phone) {
         exit;
     }
     
-    file_put_contents('check.txt', PHP_EOL . 'ses ' . print_r($url, 1), FILE_APPEND | LOCK_EX);
-    file_put_contents('check.txt', PHP_EOL . 'ses ' . print_r($response, 1), FILE_APPEND | LOCK_EX);
-
     $data = json_decode($response, true);
 
     if (json_last_error() !== JSON_ERROR_NONE) {
@@ -115,8 +110,6 @@ if ($pin) {
         echo json_encode(['error' => 'Error']);
         exit;
     }
-    file_put_contents('check.txt', PHP_EOL . 'ses ' . print_r($url, 1), FILE_APPEND | LOCK_EX);
-    file_put_contents('check.txt', PHP_EOL . 'ses ' . print_r($response, 1), FILE_APPEND | LOCK_EX);
 
     $data = json_decode($response, true);
 
